@@ -1,8 +1,8 @@
-var Player = function(name, color, position, direction) {
+var Player = function(name, color, position, direction, life) {
 
     this.name = name;
     this.position = position;
-    this.life = 3;
+    this.life = life;
     this.bullets = new Array();
     this.direction = direction;
     this.speed = 0;
@@ -11,7 +11,7 @@ var Player = function(name, color, position, direction) {
         color: color,
         });
 
-    bumperMesh = new THREE.Mesh(new THREE.CylinderGeometry(0, 10, 10, 12, 12, false), this.materialBumper);
+    bumperMesh = new THREE.Mesh(new THREE.CylinderGeometry(5, 10, 10, 12, 12, false), this.materialBumper);
     bumperMesh.rotation.x = Math.PI / 2 ;
 
     sphere = new THREE.SphereGeometry(6, 8, 8);
@@ -21,6 +21,8 @@ var Player = function(name, color, position, direction) {
     THREE.GeometryUtils.merge(canon, sphere);
 
     this.graphic = new THREE.Mesh(sphere, this.material);
+    this.graphic.position.x = this.position.x;
+    this.graphic.position.y = this.position.y;
     this.graphic.position.z = 6;
     this.graphic.rotateOnAxis(new THREE.Vector3(0,0,1), this.direction);
 };
@@ -38,8 +40,9 @@ Player.prototype.dead = function () {
     this.graphic.position.z = this.graphic.position.z-0.1;
         //Nettoyage de la div container
         $("#container").html("");
-        jQuery('#'+this.name+' >.life').text("Tu es mort !");
-        init();
+        player1.life = player1.life - 1;
+        jQuery('#'+this.name+' >.life').text(player1.life.toString());
+        init(player1.life);
 }
 
 Player.prototype.decelerate = function (distance) {
@@ -56,8 +59,8 @@ Player.prototype.displayInfo = function () {
 }
 
 Player.prototype.turnRight = function (angle) {
-    this.direction += angle;
-    this.graphic.rotateOnAxis(new THREE.Vector3(0,0,1), angle);
+    this.direction -= angle;
+    this.graphic.rotateOnAxis(new THREE.Vector3(0,0,-1), angle);
 };
 
 Player.prototype.turnLeft = function (angle) {
@@ -82,5 +85,5 @@ Player.prototype.move = function () {
 
     light1.position.x = this.graphic.position.x;
     light1.position.y = this.graphic.position.y;
-   // light1.position.z = this.graphic.position.z + 500;
+    light1.position.z = this.graphic.position.z + 500;
 };

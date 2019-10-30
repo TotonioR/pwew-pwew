@@ -15,13 +15,12 @@ You can update the index.html file and all the files inside the game repository
 - [X] : As a user, I want to a map with a tiles
 - [X] : As a user, I want to fall when I have no tile under me
 - [X] : As a user, I want to restart the game, if I fall
-
+- [X] : As a user, I want to turn right/left to be able to change my direction (right/left)
+- [X] : As a user, I want to be stop when I go into the left wall
+- [X] : As a user, I want a better light to be able to see all the map
 
 **TO DO**
 
-- [ ] : As a user, I want to turn right/left to be able to change my direction (right/left)
-- [ ] : As a user, I want a better light to be able to see all the map
-- [ ] : As a user, I want to be stop when I go into the left wall
 - [ ] : As a user, I want to have a ground when I start the game
 - [ ] : As a user, I want to see ennemy
 - [ ] : As a user, I want to destroy ennemy when I shot them
