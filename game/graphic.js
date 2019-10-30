@@ -22,7 +22,7 @@ function init(life)
 
     $container.append(renderer.domElement);
     
-    player1 = new Player("player1", 0xffff00, new THREE.Vector2(240, 0), 0), life;
+    player1 = new Player("player1", 0xffff00, new THREE.Vector2(240, 0), 0, life);
     player2 = new Player("player2", 0xfc0303, new THREE.Vector2(-240, 0), 0, 1);
     scene.add(player1.graphic);
     scene.add(player2.graphic);
